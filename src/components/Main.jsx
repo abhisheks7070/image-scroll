@@ -24,14 +24,14 @@ const Main = () => {
     useEffect(() => {
 
         setImages([])
-        for (let i = 0; i <= 8; i++) {
-            setImages((prev) => [...prev, `https://picsum.photos/101/10${i}`])
+        for (let i = 0; i <= 7; i++) {
+            setImages((prev) => [...prev, `https://picsum.photos/200/20${i}/`])
 
         }
     }, []);
     useEffect(() => {
 
-        const interval = setInterval(handleRight, 300);
+        const interval = setInterval(handleRight, 500);
 
         // Cleanup the interval on component unmount
         return () => clearInterval(interval);
@@ -56,20 +56,23 @@ const Main = () => {
                 <div><button onClick={handleLeft}>L</button></div>
                 <div className='flex flex-col items-center'>
 
-                    <div className=" w-[40vw] h-[60vh] m-2 overflow-hidden ">
+                    <div className=" w-[20vw] h-[40vh] m-2 overflow-hidden ">
                         {images.map((src, index) => (
                             <div
                                 key={index}
-                                className="rounded-3xl inline-block w-[40vw] h-[60vh] overflow-hidden align-top text-center"
+                                className="rounded-3xl inline-block w-[20vw] h-[40vh] overflow-hidden align-top text-center"
                             >
                                 <img
                                     src={src}
                                     alt={`Image ${index + 1}`}
-                                    className=" w-full h-full object-cover"
+                                    className=" w-full h-full object-fit"
                                 />
                             </div>
                         ))}
+
                     </div>
+
+                   
                     <div className=' flex gap-3'>
                         {images.map((src, index) => (
                             <div
